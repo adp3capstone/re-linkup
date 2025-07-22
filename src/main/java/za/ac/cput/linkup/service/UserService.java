@@ -50,7 +50,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User create(User user) {
+    public User save(User user) {
         return userRepository.save(user);
     }
 
@@ -65,9 +65,10 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void deleteById(Integer integer) {
 
     }
+
 
     @Override
     public List<User> findAll() {

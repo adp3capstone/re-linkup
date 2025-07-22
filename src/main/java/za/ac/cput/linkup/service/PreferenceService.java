@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.prefs.Preferences;
 
 @Service
-public class PreferenceService implements IPreferencesService {
+public class PreferenceService implements IPreferenceService {
     @Autowired
     private PreferenceRepository preferenceRepository;
     @Autowired
@@ -25,37 +25,37 @@ public class PreferenceService implements IPreferencesService {
     }
 
     @Override
-    public Optional<Preferences> findBySmokingPreference(boolean smokingPreference) {
+    public Optional<Preference> findBySmokingPreference(boolean smokingPreference) {
         return preferenceRepository.findBySmokingPreference(smokingPreference);
     }
 
     @Override
-    public Optional<Preferences> findByDrinkingPreference(boolean drinkingPreference) {
+    public Optional<Preference> findByDrinkingPreference(boolean drinkingPreference) {
         return preferenceRepository.findByDrinkingPreference(drinkingPreference);
     }
 
     @Override
-    public Optional<Preferences> findByPreferredGender(String preferredGender) {
+    public Optional<Preference> findByPreferredGender(String preferredGender) {
         return preferenceRepository.findByPreferredGender(preferredGender);
     }
 
     @Override
-    public Optional<Preferences> findByPreferredCourses(List<String> preferredCourses) {
+    public Optional<Preference> findByPreferredCourses(List<String> preferredCourses) {
         return preferenceRepository.findByPreferredCourses(preferredCourses);
     }
 
     @Override
-    public Optional<Preferences> findByMinAge(int minAge) {
+    public Optional<Preference> findByMinAge(int minAge) {
         return preferenceRepository.findByMinAge(minAge);
     }
 
     @Override
-    public Optional<Preferences> findByMaxAge(int maxAge) {
+    public Optional<Preference> findByMaxAge(int maxAge) {
         return preferenceRepository.findByMaxAge(maxAge);
     }
 
     @Override
-    public Optional<Preferences> findByMaxDistance(int maxDistance) {
+    public Optional<Preference> findByMaxDistance(int maxDistance) {
         return preferenceRepository.findByMaxDistance(maxDistance);
     }
 
@@ -64,28 +64,29 @@ public class PreferenceService implements IPreferencesService {
         return preferenceRepository.findByRelationshipType(relationshipType);
     }
 
+
     @Override
-    public Preferences create(Preferences preferences) {
-        return null;
+    public Preference save(Preference entity) {
+        return preferenceRepository.save(entity);
     }
 
     @Override
-    public Preferences read(Integer integer) {
-        return null;
+    public Preference update(Preference entity) {
+        return preferenceRepository.save(entity);
     }
 
     @Override
-    public Preferences update(Preferences preferences) {
-        return null;
-    }
-
-    @Override
-    public void delete(Integer integer) {
+    public void deleteById(Integer integer) {
 
     }
 
     @Override
-    public List<Preferences> findAll() {
-        return List.of();
+    public Preference read(Integer integer) {
+        return preferenceRepository.findById(integer).get();
+    }
+
+    @Override
+    public List<Preference> findAll() {
+        return preferenceRepository.findAll();
     }
 }

@@ -13,15 +13,15 @@ import java.util.prefs.Preferences;
 public interface PreferenceRepository extends JpaRepository<Preference, Integer> {
     Optional<Preference> findByPreferenceId(int preferenceId);
 
-    Optional<Preferences> findBySmokingPreference(boolean smokingPreference);
-    Optional<Preferences> findByDrinkingPreference(boolean drinkingPreference);
-    Optional<Preferences> findByPreferredGender(String preferredGender);
-    Optional<Preferences> findByPreferredCourses(List<String> preferredCourses);
+    Optional<Preference> findBySmokingPreference(boolean smokingPreference);
+    Optional<Preference> findByDrinkingPreference(boolean drinkingPreference);
+    Optional<Preference> findByPreferredGender(String preferredGender);
+    Optional<Preference> findByPreferredCourses(List<String> preferredCourses);
 
-    Optional<Preferences> findByMinAge(int minAge);
-    Optional<Preferences> findByMaxAge(int maxAge);
+    Optional<Preference> findByMinAge(int minAge);
+    Optional<Preference> findByMaxAge(int maxAge);
 
-    Optional<Preferences> findByMaxDistance(int maxDistance);
+    Optional<Preference> findByMaxDistance(int maxDistance);
     Optional<Preference> findByRelationshipType(String relationshipType);
 
 }
