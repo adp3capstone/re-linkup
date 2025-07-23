@@ -1,4 +1,4 @@
-package za.ac.cput.linkup.domain;
+package za.ac.cput.linkup.domain.enums;
 
 public enum Course {
     BA_IN_PSYCHOLOGY,

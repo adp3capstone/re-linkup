@@ -3,6 +3,7 @@ package za.ac.cput.linkup.factory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.linkup.domain.Match;
+import za.ac.cput.linkup.domain.User;
 
 
 import java.time.LocalDateTime;
@@ -17,8 +18,8 @@ class MatchFactoryTest {
 
         long matchId = 1001L;
         boolean isActive = true;
-        User user1 = new User("u001", "Luyanda");
-        User user2 = new User("u002", "Nomusa");
+        User user1 = new User();
+        User user2 = new User();
         Match match = MatchFactory.createMatch(matchId, LocalDateTime.now(), isActive, user1, user2);
 
         assertNotNull(match);
@@ -31,13 +32,13 @@ class MatchFactoryTest {
 
     @Test
     void createMatch_user1Null_returnsNull() {
-        Match match = MatchFactory.createMatch(1002L, LocalDateTime.now(), true, null, new User("u002", "Bob"));
+        Match match = MatchFactory.createMatch(1002L, LocalDateTime.now(), true, null, new User());
         assertNull(match);
     }
 
     @Test
     void createMatch_user2Null_returnsNull() {
-        Match match = MatchFactory.createMatch(1003L, LocalDateTime.now(), true, new User("u001", "Alice"), null);
+        Match match = MatchFactory.createMatch(1003L, LocalDateTime.now(), true, new User(), null);
         assertNull(match);
     }
 }

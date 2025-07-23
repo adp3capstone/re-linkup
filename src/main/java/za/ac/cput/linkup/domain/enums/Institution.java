@@ -1,4 +1,4 @@
-package za.ac.cput.linkup.domain;
+package za.ac.cput.linkup.domain.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

@@ -1,6 +1,7 @@
 package za.ac.cput.linkup.factory;
 
 import za.ac.cput.linkup.domain.Like;
+import za.ac.cput.linkup.domain.User;
 
 import java.time.LocalDateTime;
 
