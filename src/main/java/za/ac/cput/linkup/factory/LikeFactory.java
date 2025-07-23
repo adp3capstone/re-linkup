@@ -1,9 +1,11 @@
 package za.ac.cput.linkup.factory;
 
+import za.ac.cput.linkup.domain.Like;
+
 import java.time.LocalDateTime;
 
-public class Like {
-    public static Like createLike(long matchId,  LocalDateTime matchedAt, User user1, User user2) {
+public class LikeFactory {
+    public static Like createLike(long matchId, LocalDateTime matchedAt, User user1, User user2) {
         if (user1 == null || user2 == null || matchedAt == null) {
             return null;
         }

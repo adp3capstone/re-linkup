@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LikeTest {
+class LikeFactoryTest {
 
     @Test
     void createLike_success() {
@@ -17,7 +17,7 @@ class LikeTest {
         User user1 = new User("u001", "Alice");
         User user2 = new User("u002", "Bob");
 
-        Like like = Like.createLike(matchId, matchedAt, user1, user2);
+        Like like = LikeFactory.createLike(matchId, matchedAt, user1, user2);
 
         assertNotNull(like);
         assertEquals(matchId, like.getMatchId());
@@ -28,19 +28,19 @@ class LikeTest {
 
     @Test
     void createLike_nullUser1_returnsNull() {
-        Like like = Like.createLike(1L, LocalDateTime.now(), null, new User("u002", "Bob"));
+        Like like = LikeFactory.createLike(1L, LocalDateTime.now(), null, new User("u002", "Bob"));
         assertNull(like);
     }
 
     @Test
     void createLike_nullUser2_returnsNull() {
-        Like like = Like.createLike(1L, LocalDateTime.now(), new User("u001", "Alice"), null);
+        Like like = LikeFactory.createLike(1L, LocalDateTime.now(), new User("u001", "Alice"), null);
         assertNull(like);
     }
 
     @Test
     void createLike_nullMatchedAt_returnsNull() {
-        Like like = Like.createLike(1L, null, new User("u001", "Alice"), new User("u002", "Bob"));
+        Like like = LikeFactory.createLike(1L, null, new User("u001", "Alice"), new User("u002", "Bob"));
         assertNull(like);
     }
 }
