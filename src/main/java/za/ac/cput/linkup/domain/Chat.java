@@ -1,5 +1,4 @@
 package za.ac.cput.linkup.domain;
-
 /*Chat.java
 Chat model class
 Author: Anita Lottering 222141395
@@ -16,7 +15,7 @@ public class Chat {
     private int lastMessageId;
     private String lastMessageContent;
 
-    protected Chat(){
+    protected Chat() {
 
     }
 
@@ -128,7 +127,7 @@ public class Chat {
             return this;
         }
 
-        public Builder copy(Chat chat){
+        public Builder copy(Chat chat) {
             this.chatId = chat.getChatId();
             this.fromUserAId = chat.getFromUserAId();
             this.toUserBId = chat.getToUserBId();
@@ -140,7 +139,7 @@ public class Chat {
             return this;
         }
 
-        public Chat build(){
+        public Chat build() {
             return new Chat(this);
 
         }

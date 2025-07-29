@@ -23,7 +23,7 @@ Date:8 May 2025
             this.displayName = displayName;
         }
 
-        public String getDisplayName(){
+        public String getDisplayName() {
             return displayName;
         }
     }
