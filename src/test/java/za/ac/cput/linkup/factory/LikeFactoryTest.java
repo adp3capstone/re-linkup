@@ -13,35 +13,35 @@ class LikeFactoryTest {
 
     @Test
     void createLike_success() {
-        long matchId = 1L;
-        LocalDateTime matchedAt = LocalDateTime.now();
-        User user1 = new User();
-        User user2 = new User();
+        long likeId = 1L;
+        LocalDateTime timestamp = LocalDateTime.now();
+        User fromUser = new User();
+        User toUser = new User();
 
-        Like like = LikeFactory.createLike(matchId, matchedAt, user1, user2);
+        Like like = LikeFactory.createLike(likeId, fromUser, toUser, timestamp);
 
         assertNotNull(like);
-        assertEquals(matchId, like.getMatchId());
-        assertEquals(matchedAt, like.getMatchedAt());
-        assertEquals(user1, like.getUser1());
-        assertEquals(user2, like.getUser2());
+        assertEquals(likeId, like.getLikeId());
+        assertEquals(fromUser, like.getFromUserId());
+        assertEquals(toUser, like.getToUserId());
+        assertEquals(timestamp, like.getTimestamp());
     }
 
     @Test
-    void createLike_nullUser1_returnsNull() {
-        Like like = LikeFactory.createLike(1L, LocalDateTime.now(), null, new User());
+    void createLike_nullFromUser_returnsNull() {
+        Like like = LikeFactory.createLike(1L, null, new User(), LocalDateTime.now());
         assertNull(like);
     }
 
     @Test
-    void createLike_nullUser2_returnsNull() {
-        Like like = LikeFactory.createLike(1L, LocalDateTime.now(), new User(), null);
+    void createLike_nullToUser_returnsNull() {
+        Like like = LikeFactory.createLike(1L, new User(), null, LocalDateTime.now());
         assertNull(like);
     }
 
     @Test
-    void createLike_nullMatchedAt_returnsNull() {
-        Like like = LikeFactory.createLike(1L, null, new User(), new User());
+    void createLike_nullTimestamp_returnsNull() {
+        Like like = LikeFactory.createLike(1L, new User(), new User(), null);
         assertNull(like);
     }
 }

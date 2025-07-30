@@ -1,75 +1,81 @@
 package za.ac.cput.linkup.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
 import java.time.LocalDateTime;
 
+@Entity
 public class Like {
-    private long matchId;
-    private LocalDateTime matchedAt;
-    private User user1;
-    private User user2;
 
-    private Like() {
+    @Id
+    private long likeId;
+
+    @ManyToOne
+    @JoinColumn(name = "from_user_id", nullable = false)
+    private User fromUserId;
+
+    @ManyToOne
+    @JoinColumn(name = "to_user_id", nullable = false)
+    private User toUserId;
+    private LocalDateTime timestamp;
+
+    protected Like() {
     }
 
     private Like(Builder builder) {
-        this.matchId = builder.matchId;
-        this.matchedAt = builder.matchedAt;
-        this.user1 = builder.user1;
-        this.user2 = builder.user2;
+        this.likeId = builder.likeId;
+        this.fromUserId = builder.fromUserId;
+        this.toUserId = builder.toUserId;
+        this.timestamp = builder.timestamp;
     }
-
-    public long getMatchId() {
-        return matchId;
+    public long getLikeId() {
+        return likeId;
     }
-    public LocalDateTime getMatchedAt() {
-        return matchedAt;
+    public User getFromUserId() {
+        return fromUserId;
     }
-    public User getUser1() {
-        return user1;
+    public User getToUserId() {
+        return toUserId;
     }
-    public User getUser2() {
-        return user2;
+    public LocalDateTime getTimestamp() {
+        return timestamp;
     }
     @Override
     public String toString() {
         return "Like{" +
-                "matchId=" + matchId +
-                ", matchedAt=" + matchedAt +
-                ", user1=" + user1 +
-                ", user2=" + user2 +
+                "likeId=" + likeId +
+                ", fromUserId=" + fromUserId +
+                ", toUserId=" + toUserId +
+                ", timestamp=" + timestamp +
                 '}';
     }
 
     public static class Builder {
-        private long matchId;
-        private LocalDateTime matchedAt;
-        private User user1;
-        private User user2;
+        private long likeId;
+        private User fromUserId;
+        private User toUserId;
+        private LocalDateTime timestamp;
 
-        public Builder setMatchId(long matchId) {
-            this.matchId = matchId;
+        public Builder setLikeId(long likeId) {
+            this.likeId = likeId;
             return this;
         }
 
-        public Builder setMatchedAt(LocalDateTime matchedAt) {
-            this.matchedAt = matchedAt;
+        public Builder setFromUserId(User fromUserId) {
+            this.fromUserId = fromUserId;
             return this;
         }
 
-        public Builder setUser1(User user1) {
-            this.user1 = user1;
+        public Builder setToUserId(User toUserId) {
+            this.toUserId = toUserId;
             return this;
         }
 
-        public Builder setUser2(User user2) {
-            this.user2 = user2;
-            return this;
-        }
-        public Builder copy(Like like) {
-            this.matchId = like.matchId;
-            this.matchedAt = like.matchedAt;
-            this.user1 = like.user1;
-            this.user2 = like.user2;
+        public Builder setTimestamp(LocalDateTime timestamp) {
+            this.timestamp = timestamp;
             return this;
         }
 
