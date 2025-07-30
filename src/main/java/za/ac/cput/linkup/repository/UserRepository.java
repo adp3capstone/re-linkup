@@ -1,5 +1,9 @@
 package za.ac.cput.linkup.repository;
-
+/**
+ * PreferenceRepository.java
+ * Author: Hope Kgomokaboya(222152672)
+ * Date: 17/05/2025
+ */
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import za.ac.cput.linkup.domain.User;
