@@ -1,9 +1,12 @@
 package za.ac.cput.linkup.factory;
 
+import za.ac.cput.linkup.domain.Match;
+import za.ac.cput.linkup.domain.User;
+
 import java.time.LocalDateTime;
 
-public class Match {
-    public static Match createMatch(long matchId,  LocalDateTime matchedAt, boolean isActive, User user1, User user2) {
+public class MatchFactory {
+    public static Match createMatch(long matchId, LocalDateTime matchedAt, boolean isActive, User user1, User user2) {
         if (user1 == null || user2 == null) {
             return null;
         }
