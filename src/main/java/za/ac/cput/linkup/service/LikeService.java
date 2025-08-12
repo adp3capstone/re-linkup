@@ -12,10 +12,20 @@ public class LikeService implements ILikeService{
 
     @Autowired
     private LikeRepository likeRepository;
+    private MatchService matchService;
 
     @Override
     public Like create(Like like) {
-        return likeRepository.save(like);
+        Like savedLike = likeRepository.save(like);
+
+        boolean reverseLikeExists = likeRepository.existsByFromUserIdAndToUserId(
+                like.getToUserId(), like.getFromUserId());
+
+        if (reverseLikeExists) {
+            matchService.createMatchIfNotExists(like.getFromUserId(), like.getToUserId());
+        }
+
+        return savedLike;
     }
 
     @Override
