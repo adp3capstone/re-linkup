@@ -1,12 +1,24 @@
 package za.ac.cput.linkup.domain;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
+@Entity
 public class Match {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long matchId;
     private LocalDateTime matchedAt;
     private boolean isActive;
+
+    @ManyToOne
+    @JoinColumn(name = "user1_id", nullable = false)
     private User user1;
+
+    @ManyToOne
+    @JoinColumn(name = "user2_id", nullable = false)
     private User user2;
 
     public Match() {

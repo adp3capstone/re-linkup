@@ -3,6 +3,8 @@ package za.ac.cput.linkup.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.linkup.domain.Match;
+import za.ac.cput.linkup.domain.User;
+import za.ac.cput.linkup.repository.IMatchRepository;
 import za.ac.cput.linkup.repository.MatchRepository;
 
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.List;
 public class MatchService implements IMatchService{
 
     @Autowired
-    private MatchRepository matchRepository;
+    private IMatchRepository matchRepository;
 
     @Override
     public Match create(Match match) {
@@ -36,5 +38,16 @@ public class MatchService implements IMatchService{
     @Override
     public List<Match> getAllMatches() {
         return matchRepository.findAll();
+    }
+
+    //check if a match already exists between two users
+    public boolean matchExists(User user1Id, User user2Id) {
+        return matchRepository.findByUser1AndUser2(user1Id, user2Id).isPresent()
+                || matchRepository.findByUser2AndUser1(user1Id, user2Id).isPresent();
+    }
+
+    // Find all matches for a specific user
+    public List<Match> getMatchesForUser(User user) {
+        return matchRepository.findByUser1OrUser2(user, user);
     }
 }

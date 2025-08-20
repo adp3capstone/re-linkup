@@ -79,6 +79,14 @@ public class Like {
             return this;
         }
 
+        public Builder copy(Like like) {
+            this.likeId = like.likeId;
+            this.fromUserId = like.fromUserId;
+            this.toUserId = like.toUserId;
+            this.timestamp = like.timestamp;
+            return this;
+        }
+
         public Like build() {
             return new Like(this);
         }
