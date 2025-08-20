@@ -1,8 +1,5 @@
 package za.ac.cput.linkup.service;
 
-public interface IService<T, ID>{
-    T create(T t);
+public interface IService<T, ID> {
     T read(ID id);
-    T update(T t);
-    boolean delete(ID id);
 }
