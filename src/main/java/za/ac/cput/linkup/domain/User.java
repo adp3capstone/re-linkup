@@ -1,13 +1,20 @@
 package za.ac.cput.linkup.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import za.ac.cput.linkup.domain.enums.Gender;
 import za.ac.cput.linkup.domain.enums.Institution;
 import za.ac.cput.linkup.domain.enums.Major;
 
 import java.util.List;
 
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long userId;
 private String password; //use bcrypt
 private String email;

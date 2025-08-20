@@ -9,7 +9,7 @@ import za.ac.cput.linkup.service.LikeService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/likes")
+@RequestMapping("/likes")
 public class LikeController {
 
     @Autowired

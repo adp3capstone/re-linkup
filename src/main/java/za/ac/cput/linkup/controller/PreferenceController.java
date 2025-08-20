@@ -1,9 +1,10 @@
 package za.ac.cput.linkup.controller;
 
-/* PreferenceController.java
+ PreferenceController.java
 Author: SH Kgomokaboya (222152672)
 Date: .
-*/
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
