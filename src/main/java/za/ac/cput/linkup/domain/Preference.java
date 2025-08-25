@@ -1,5 +1,6 @@
 package za.ac.cput.linkup.domain;
 
+import jakarta.persistence.*;
 import za.ac.cput.linkup.domain.enums.Course;
 import za.ac.cput.linkup.domain.enums.Gender;
 import za.ac.cput.linkup.domain.enums.Interest;
@@ -7,17 +8,22 @@ import za.ac.cput.linkup.domain.enums.RelationshipType;
 
 import java.util.List;
 
+@Entity
 public class Preference {
+    @Id
     private Long preferenceId;
+
     private int minAge;
     private int maxAge;
     private Gender preferredGender;
-    private List<Course> preferredCourses;
+    private Course preferredCourses;
+
     private int maxDistance;
     private boolean smokingPreference;
     private boolean drinkingPreference;
     private RelationshipType relationshipType;
-    private List<Interest> interests;
+
+    private Interest interests;
 
     public Preference() {
     }
@@ -35,17 +41,57 @@ public class Preference {
         this.interests = builder.interests;
     }
 
+    public Long getPreferenceId() {
+        return preferenceId;
+    }
+
+    public int getMinAge() {
+        return minAge;
+    }
+
+    public int getMaxAge() {
+        return maxAge;
+    }
+
+    public Gender getPreferredGender() {
+        return preferredGender;
+    }
+
+    public Course getPreferredCourses() {
+        return preferredCourses;
+    }
+
+    public int getMaxDistance() {
+        return maxDistance;
+    }
+
+    public boolean isSmokingPreference() {
+        return smokingPreference;
+    }
+
+    public boolean isDrinkingPreference() {
+        return drinkingPreference;
+    }
+
+    public RelationshipType getRelationshipType() {
+        return relationshipType;
+    }
+
+    public Interest getInterests() {
+        return interests;
+    }
+
     public static class Builder {
         private Long preferenceId;
         private int minAge;
         private int maxAge;
         private Gender preferredGender;
-        private List<Course> preferredCourses;
+        private Course preferredCourses;
         private int maxDistance;
         private boolean smokingPreference;
         private boolean drinkingPreference;
         private RelationshipType relationshipType;
-        private List<Interest> interests;
+        private Interest interests;
 
         public Builder setPreferenceId(Long preferenceId) {
             this.preferenceId = preferenceId;
@@ -67,7 +113,7 @@ public class Preference {
             return this;
         }
 
-        public Builder setPreferredCourses(List<Course> preferredCourses) {
+        public Builder setPreferredCourses(Course preferredCourses) {
             this.preferredCourses = preferredCourses;
             return this;
         }
@@ -92,7 +138,7 @@ public class Preference {
             return this;
         }
 
-        public Builder setInterests(List<Interest> interests) {
+        public Builder setInterests(Interest interests) {
             this.interests = interests;
             return this;
         }

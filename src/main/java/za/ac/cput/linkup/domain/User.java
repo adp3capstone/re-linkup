@@ -1,27 +1,38 @@
 package za.ac.cput.linkup.domain;
 
+import jakarta.persistence.*;
 import za.ac.cput.linkup.domain.enums.Gender;
 import za.ac.cput.linkup.domain.enums.Institution;
 import za.ac.cput.linkup.domain.enums.Major;
 
 import java.util.List;
 
+@Entity
 public class User {
+    @Id
+    private Long userId;
+    private String password; //use bcrypt
+    private String email;
+    private String firstName;
+    private String lastName;
+    private int age;
+    private Gender gender;
+    private String bio;
+    private Institution institution;
+    private Major major;
+    @OneToOne
+    @JoinColumn(name = "preferenceId")
+    private Preference preferences;
 
-private Long userId;
-private String password; //use bcrypt
-private String email;
-private String firstName;
-private String lastName;
-private int age;
-private Gender gender;
-private String bio;
-private Institution institution;
-private Major major;
-private Preference preferences;
-private List<Like> likes;
-private List<Match> matches;
-private List<Image> images;
+    @OneToMany
+    private List<Like> likes;
+
+
+    @OneToMany(mappedBy = "user1")
+    private List<Match> matches;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Image> images;
 
     public User() {
     }

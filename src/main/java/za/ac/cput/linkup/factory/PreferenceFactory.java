@@ -11,9 +11,9 @@ import java.util.List;
 
 public class PreferenceFactory {
     public static Preference createPreference(Long preferenceId, int minAge, int maxAge, Gender preferredGender,
-                                              List<Course> preferredCourses, int maxDistance, boolean smokingPreference,
+                                              Course preferredCourses, int maxDistance, boolean smokingPreference,
                                               boolean drinkingPreference, RelationshipType relationshipType,
-                                              List<Interest> interests) {
+                                              Interest interests) {
 
         if (!Helper.isValidLong(preferenceId) ||
                 Helper.isIntNegative(minAge) ||

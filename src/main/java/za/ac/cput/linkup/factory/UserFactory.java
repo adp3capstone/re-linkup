@@ -9,24 +9,22 @@ import za.ac.cput.linkup.util.Helper;
 import java.util.List;
 
 public class UserFactory {
-    public static User createUser(Long userId, String password, String email, String firstName, String lastName,
-                                  int age, Gender gender, String bio, Institution institution, Major major,
-                                  Preference preferences, List<Like> likes, List<Match> matches, List<Image> images) {
 
-        if (!Helper.isValidLong(userId) ||
-                Helper.isStringNullOrEmpty(password) ||
-                !Helper.isValidEmail(email) ||
-                Helper.isStringNullOrEmpty(firstName) ||
-                Helper.isStringNullOrEmpty(lastName) ||
-                Helper.isIntNegative(age) ||
-                Helper.isObjectNull(gender) ||
-                Helper.isObjectNull(institution) ||
-                Helper.isObjectNull(major)) {
+    public static User createUser(Long userId, String username, String password, String email,
+                                  String firstName, String lastName, int age, Gender gender,
+                                  String bio, List<String> university, List<String> course,
+                                  String yearOfStudy, boolean isVerified, Preference preferences,
+                                  List<String> likes, List<String> matches, List<String> images) {
+
+        if (userId <= 0 || Helper.isStringNullOrEmpty(username) || Helper.isStringNullOrEmpty(password) ||
+                Helper.isStringNullOrEmpty(firstName) || Helper.isStringNullOrEmpty(lastName) || age <= 16 || age > 120 ||
+                gender == null || !Helper.isValidEmail(email)) {
             return null;
         }
 
         return new User.Builder()
                 .setUserId(userId)
+                .setFirstName(firstName)
                 .setPassword(password)
                 .setEmail(email)
                 .setFirstName(firstName)
@@ -34,12 +32,36 @@ public class UserFactory {
                 .setAge(age)
                 .setGender(gender)
                 .setBio(bio)
-                .setInstitution(institution)
-                .setMajor(major)
+                //.setUniversity(university)
+                //.setCourse(course)
+
+
                 .setPreferences(preferences)
-                .setLikes((List) likes)
-                .setMatches((List) matches)
-                .setImages((List) images)
+                //.setLikes(likes)
+                //.setMatches(matches)
+                //.setImages(images)
+                .build();
+    }
+
+    public static User createBasicUser(Long userId, String username, String password,
+                                       String email, String firstName, String lastName,
+                                       int age, Gender gender) {
+
+        if (userId <= 0 || Helper.isStringNullOrEmpty(username) || Helper.isStringNullOrEmpty(password) ||
+                Helper.isStringNullOrEmpty(firstName) || Helper.isStringNullOrEmpty(lastName) || age <= 16 || age > 120 ||
+                gender == null || !Helper.isValidEmail(email)) {
+            return null;
+        }
+
+        return new User.Builder()
+                .setUserId(userId)
+                .setFirstName(firstName)
+                .setPassword(password)
+                .setEmail(email)
+                .setFirstName(firstName)
+                .setLastName(lastName)
+
+                .setGender(gender)
                 .build();
     }
 }
