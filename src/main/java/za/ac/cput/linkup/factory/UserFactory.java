@@ -1,5 +1,10 @@
 package za.ac.cput.linkup.factory;
 
+/* UserFactory.java
+Author: SH Kgomokaboya (222152672)
+Date: .
+*/
+
 import za.ac.cput.linkup.domain.*;
 import za.ac.cput.linkup.domain.enums.*;
 import za.ac.cput.linkup.domain.enums.Institution;

@@ -1,5 +1,10 @@
 package za.ac.cput.linkup.factory;
 
+/* PreferenceFactory.java
+Author: SH Kgomokaboya (222152672)
+Date: .
+*/
+
 import za.ac.cput.linkup.domain.Preference;
 import za.ac.cput.linkup.domain.enums.Course;
 import za.ac.cput.linkup.domain.enums.Gender;
